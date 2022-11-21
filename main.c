@@ -13,6 +13,18 @@ unsigned char buf[256];
 int wait = 1;
 char key_pressed[36];
 
+struct folder{
+	int data;
+	struct folder* left;
+	struct folder* right;
+	unsigned char image[];
+};
+struct key{
+	int data;
+	int command;
+	unsigned char image[];
+};
+
 int streamdeck_server()
 {
 	res = 0;
@@ -25,8 +37,15 @@ int streamdeck_server()
 		}
 		else if (res != 0)
 		{
-			for (int x = 0; x < res; x++)
-				strcat((unsigned int) buf[i], key_pressed);
+			for (int i = 1; i < res; i++)
+			{
+				if (buf[i] == 01)
+				{
+					;
+				}
+
+			}
+
 		}
 	}
 
